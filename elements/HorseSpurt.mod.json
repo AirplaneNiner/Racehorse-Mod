@@ -1,0 +1,18 @@
+{
+  "_fv": 79,
+  "_type": "attribute",
+  "definition": {
+    "name": "Horse Spurt",
+    "minValue": 0.4,
+    "maxValue": 1.0,
+    "defaultValue": 0.4,
+    "sentiment": "POSITIVE",
+    "addToAllEntities": false,
+    "addToPlayers": false,
+    "entities": [
+      {
+        "value": "EntityHorse"
+      }
+    ]
+  }
+}

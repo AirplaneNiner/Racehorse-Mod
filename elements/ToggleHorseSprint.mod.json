@@ -1,0 +1,15 @@
+{
+  "_fv": 79,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "LCONTROL",
+    "keyBindingName": "Toggle Horse Sprint",
+    "keyBindingCategoryKey": "movement",
+    "onKeyPressed": {
+      "name": "ToggleHorseSprintOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "ToggleHorseSprintOnKeyReleased"
+    }
+  }
+}
