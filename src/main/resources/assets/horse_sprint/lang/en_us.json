@@ -3,5 +3,6 @@
   "key.horse_sprint.toggle_horse_sprint": "Toggle Horse Sprint",
   "attribute.horse_sprint.horse_spurt": "Horse Spurt",
   "attribute.horse_sprint.horse_spurt_timer": "Horse Spurt Timer",
-  "attribute.horse_sprint.horse_max_spurt_timer": "Horse Spurt Timer"
+  "attribute.horse_sprint.horse_max_spurt_timer": "Horse Spurt Timer",
+  "gui.horse_sprint.sprint_bar.label_empty": "Sprinting"
 }

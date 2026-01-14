@@ -107,8 +107,8 @@ public class HorseSprintModVariables {
 		boolean _syncDirty = false;
 		public boolean horseCanSprint = true;
 		public boolean horseIsSprinting = false;
-		public double horseSpurtTimer = 0;
-		public double horseMaxSpurt = 0;
+		public String horseSpurtTimer = "";
+		public String horseMaxSpurt = "";
 		public double SecondTimer = 0.0;
 
 		public static MapVariables load(CompoundTag tag) {
@@ -120,8 +120,8 @@ public class HorseSprintModVariables {
 		public void read(CompoundTag nbt) {
 			horseCanSprint = nbt.getBoolean("horseCanSprint");
 			horseIsSprinting = nbt.getBoolean("horseIsSprinting");
-			horseSpurtTimer = nbt.getDouble("horseSpurtTimer");
-			horseMaxSpurt = nbt.getDouble("horseMaxSpurt");
+			horseSpurtTimer = nbt.getString("horseSpurtTimer");
+			horseMaxSpurt = nbt.getString("horseMaxSpurt");
 			SecondTimer = nbt.getDouble("SecondTimer");
 		}
 
@@ -129,8 +129,8 @@ public class HorseSprintModVariables {
 		public CompoundTag save(CompoundTag nbt) {
 			nbt.putBoolean("horseCanSprint", horseCanSprint);
 			nbt.putBoolean("horseIsSprinting", horseIsSprinting);
-			nbt.putDouble("horseSpurtTimer", horseSpurtTimer);
-			nbt.putDouble("horseMaxSpurt", horseMaxSpurt);
+			nbt.putString("horseSpurtTimer", horseSpurtTimer);
+			nbt.putString("horseMaxSpurt", horseMaxSpurt);
 			nbt.putDouble("SecondTimer", SecondTimer);
 			return nbt;
 		}

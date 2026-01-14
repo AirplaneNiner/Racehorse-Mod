@@ -9,7 +9,6 @@ import net.minecraft.world.entity.Entity;
 
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
-import net.airplaneniner.horsesprint.HorseSprintMod;
 
 public class ToggleHorseSprintOnKeyPressedProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
@@ -27,8 +26,8 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
 						_entity.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(modifier);
 					}
 				}
-				HorseSprintMod.LOGGER.info(new java.text.DecimalFormat("##.##")
-						.format((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity7.getAttribute(Attributes.MOVEMENT_SPEED).getValue() : 0));
+				HorseSprintModVariables.MapVariables.get(world).horseIsSprinting = true;
+				HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
 				TickSpurtTimerProcedure.execute(world, entity);
 			}
 		}

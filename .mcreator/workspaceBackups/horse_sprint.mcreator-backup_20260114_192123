@@ -1,0 +1,328 @@
+{
+  "mod_elements": [
+    {
+      "name": "HorseStamina",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horse_stamina",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "ApplyHorseStamina",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "apply_horse_stamina",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/ApplyHorseStaminaProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ToggleHorseSprint",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_horse_sprint",
+      "metadata": {
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/network/ToggleHorseSprintMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "ToggleHorseSprintOnKeyPressed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_horse_sprint_on_key_pressed",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/ToggleHorseSprintOnKeyPressedProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ToggleHorseSprintOnKeyReleased",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_horse_sprint_on_key_released",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/ToggleHorseSprintOnKeyReleasedProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "HorseSpurt",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horse_spurt",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "TickSpurtTimer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tick_spurt_timer",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/TickSpurtTimerProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ReplenishSpurtTimer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "replenish_spurt_timer",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/ReplenishSpurtTimerProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "HorseSpurtTimer",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horse_spurt_timer",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "HorseMaxSpurtTimer",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horse_max_spurt_timer",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "TickSeconds",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tick_seconds",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/TickSecondsProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "SprintBar",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sprint_bar",
+      "metadata": {
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/client/screens/SprintBarOverlay.java"
+        ]
+      }
+    },
+    {
+      "name": "SprintBarDisplayOverlayIngame",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sprint_bar_display_overlay_ingame",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/SprintBarDisplayOverlayIngameProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "SprintBarShowBar",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sprint_bar_show_bar",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/SprintBarShowBarProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "SprintBarDisplayValue",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sprint_bar_display_value",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/SprintBarDisplayValueProcedure.java"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "horseCanSprint",
+      "type": "logic",
+      "scope": "map",
+      "value": "true"
+    },
+    {
+      "name": "horseIsSprinting",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "horseSpurtTimer",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "horseMaxSpurt",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "SecondTimer",
+      "type": "number",
+      "scope": "map",
+      "value": "0.0"
+    }
+  ],
+  "sound_elements": [],
+  "tag_elements": {},
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "attribute.horse_sprint.horse_stamina": "Horse Stamina",
+      "key.horse_sprint.toggle_horse_sprint": "Toggle Horse Sprint",
+      "attribute.horse_sprint.horse_spurt": "Horse Spurt",
+      "attribute.horse_sprint.horse_spurt_timer": "Horse Spurt Timer",
+      "attribute.horse_sprint.horse_max_spurt_timer": "Horse Spurt Timer",
+      "gui.horse_sprint.sprint_bar.label_empty": "ggg"
+    }
+  },
+  "metadata": {
+    "files": [
+      "src/main/java/net/airplaneniner/horsesprint/init/HorseSprintModAttributes.java",
+      "src/main/java/net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings.java",
+      "src/main/resources/META-INF/mods.toml",
+      "src/main/java/net/airplaneniner/horsesprint/network/HorseSprintModVariables.java",
+      "src/main/java/net/airplaneniner/horsesprint/HorseSprintMod.java",
+      "src/main/resources/pack.mcmeta"
+    ]
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "horse_sprint",
+    "modName": "Horse Sprint",
+    "version": "1.0.0",
+    "author": "MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.20.1",
+    "modElementsPackage": "net.airplaneniner.horsesprint"
+  },
+  "mcreatorVersion": 202500345720
+}

@@ -1,5 +1,5 @@
 Forge Auto Renaming Tool v2.0.4
-lib: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\moddev\artifacts\forge-1.20.1-47.4.13.jar
+lib: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\moddev\artifacts\forge-1.20.1-47.4.13.jar
 lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-common\0.5.0\286da96036621082491d971dfc62bee8fc37d161\mixinextras-common-0.5.0.jar
 lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\io.github.llamalad7\mixinextras-forge\0.5.0\cebe4d98a42a4a32ebf0ddec7b93d5bdbdad009\mixinextras-forge-0.5.0.jar
 lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.10\51e6a22c6c716beb11e244bf5b8be480f51dd6b5\securejarhandler-2.1.10.jar
@@ -94,10 +94,10 @@ lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\org.chec
 lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.11.0\c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69\error_prone_annotations-2.11.0.jar
 lib: C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar
 log: null
-input: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\devlibs\modid-1.0.jar
-output: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\libs\modid-1.0.jar
+input: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\devlibs\modid-1.0.jar
+output: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\libs\modid-1.0.jar
 threads: 12
-Names: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\moddev\artifacts\namedToIntermediate.tsrg(reversed: false)
+Names: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\moddev\artifacts\namedToIntermediate.tsrg(reversed: false)
 Fix Annotations: false
 Unfinal Parameters: false
 Fix Records: false
@@ -106,12 +106,16 @@ Fix SourceFile: false
 Fix Line Numbers: false
 Strip codesigning signatures: ALL
 Adding Libraries to Inheritance
-Reading Input: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\devlibs\modid-1.0.jar
+Reading Input: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\devlibs\modid-1.0.jar
 Adding input to inheritance map
 Processing entries
+Conflicting propagated mapping for net/airplaneniner/horsesprint/network/HorseSprintModVariables$MapVariables/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/saveddata/SavedData/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;: save -> m_7176_
+Conflicting propagated mapping for net/airplaneniner/horsesprint/network/HorseSprintModVariables$WorldVariables/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/saveddata/SavedData/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;: save -> m_7176_
+Conflicting propagated mapping for net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings$1/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
+Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
 Sorting
-Writing Output: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\libs\modid-1.0.jar
+Writing Output: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\libs\modid-1.0.jar
   META-INF/
   META-INF/MANIFEST.MF
   META-INF/jarjar/
@@ -122,17 +126,38 @@ Writing Output: C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprin
   assets/horse_sprint/
   assets/horse_sprint/lang/
   assets/horse_sprint/lang/en_us.json
+  assets/horse_sprint/textures/
+  assets/horse_sprint/textures/screens/
+  assets/horse_sprint/textures/screens/experience_bar.png
+  assets/horse_sprint/textures/screens/experience_bar_back.png
   net/
   net/airplaneniner/
   net/airplaneniner/horsesprint/
   net/airplaneniner/horsesprint/HorseSprintMod.class
+  net/airplaneniner/horsesprint/client/
+  net/airplaneniner/horsesprint/client/screens/
+  net/airplaneniner/horsesprint/client/screens/SprintBarOverlay.class
   net/airplaneniner/horsesprint/init/
   net/airplaneniner/horsesprint/init/HorseSprintModAttributes.class
+  net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings$1.class
   net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings$KeyEventListener.class
   net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings.class
   net/airplaneniner/horsesprint/network/
+  net/airplaneniner/horsesprint/network/HorseSprintModVariables$EventBusVariableHandlers.class
+  net/airplaneniner/horsesprint/network/HorseSprintModVariables$MapVariables.class
+  net/airplaneniner/horsesprint/network/HorseSprintModVariables$SavedDataSyncMessage.class
+  net/airplaneniner/horsesprint/network/HorseSprintModVariables$WorldVariables.class
+  net/airplaneniner/horsesprint/network/HorseSprintModVariables.class
   net/airplaneniner/horsesprint/network/ToggleHorseSprintMessage.class
   net/airplaneniner/horsesprint/procedures/
   net/airplaneniner/horsesprint/procedures/ApplyHorseStaminaProcedure.class
+  net/airplaneniner/horsesprint/procedures/ReplenishSpurtTimerProcedure.class
+  net/airplaneniner/horsesprint/procedures/SprintBarDisplayOverlayIngameProcedure.class
+  net/airplaneniner/horsesprint/procedures/SprintBarDisplaySpeedProcedure.class
+  net/airplaneniner/horsesprint/procedures/SprintBarDisplayValueProcedure.class
+  net/airplaneniner/horsesprint/procedures/SprintBarShowBarProcedure.class
+  net/airplaneniner/horsesprint/procedures/TickSecondsProcedure.class
+  net/airplaneniner/horsesprint/procedures/TickSpurtTimerProcedure.class
   net/airplaneniner/horsesprint/procedures/ToggleHorseSprintOnKeyPressedProcedure.class
+  net/airplaneniner/horsesprint/procedures/ToggleHorseSprintOnKeyReleasedProcedure.class
   pack.mcmeta
