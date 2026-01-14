@@ -32,7 +32,7 @@ public class ApplyHorseStaminaProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof Horse) {
+		if (entity instanceof HorseGeneticEntity) {
 			if (entity instanceof LivingEntity _livingEntity2 && _livingEntity2.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get()))
 				_livingEntity2.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get()).setBaseValue((Mth.nextDouble(RandomSource.create(), 0.05875, 0.16875)));
 			if (entity instanceof LivingEntity _livingEntity4 && _livingEntity4.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get()))

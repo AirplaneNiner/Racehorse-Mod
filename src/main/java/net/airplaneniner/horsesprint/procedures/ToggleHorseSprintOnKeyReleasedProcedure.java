@@ -12,7 +12,7 @@ public class ToggleHorseSprintOnKeyReleasedProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.getVehicle()) instanceof Horse) {
+		if ((entity.getVehicle()) instanceof HorseGeneticEntity) {
 			if ((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttribute(Attributes.MOVEMENT_SPEED).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:spurt"))) {
 				if ((entity.getVehicle()) instanceof LivingEntity _entity) {
 					_entity.getAttribute(Attributes.MOVEMENT_SPEED).getModifiers().forEach((_attribute) -> {

@@ -14,7 +14,7 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.getVehicle()) instanceof Horse) {
+		if ((entity.getVehicle()) instanceof HorseGeneticEntity) {
 			if (HorseSprintModVariables.MapVariables.get(world).horseCanSprint) {
 				if ((entity.getVehicle()) instanceof LivingEntity _entity) {
 					AttributeModifier modifier = new AttributeModifier("horse_sprint:spurt",

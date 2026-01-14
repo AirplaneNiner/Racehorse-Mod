@@ -43,6 +43,12 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
+repositories {
+    maven {
+        url 'https://cursemaven.com'
+    }
+}
+
 mixin {
     if (file("src/main/resources/horse_sprint.mixins.json").exists()) {
         add sourceSets.main, "horse_sprint.refmap.json"
@@ -53,6 +59,7 @@ mixin {
 dependencies {
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0"))
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.0"))
+    implementation fg.deobf("curse.maven:horseGenes-339184:${horse_colors_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
