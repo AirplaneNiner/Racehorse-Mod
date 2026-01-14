@@ -129,6 +129,10 @@
       "metadata": {
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -157,6 +161,24 @@
       "metadata": {
         "files": []
       }
+    },
+    {
+      "name": "TickSeconds",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tick_seconds",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/airplaneniner/horsesprint/procedures/TickSecondsProcedure.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -183,6 +205,12 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "SecondTimer",
+      "type": "number",
+      "scope": "map",
+      "value": "0.0"
     }
   ],
   "sound_elements": [],

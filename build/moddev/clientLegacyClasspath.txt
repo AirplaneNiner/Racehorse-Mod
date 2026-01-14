@@ -110,5 +110,5 @@ C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\org.ow2.asm\a
 C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.0\82b150a36b504a09076b29c0509e31702c9c3999\slf4j-api-2.0.0.jar
 C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-simple\1.7.30\e606eac955f55ecf1d8edcccba04eb8ac98088dd\slf4j-simple-1.7.30.jar
 C:\Users\Administrator\.mcreator\gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar
-C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\moddev\artifacts\client-extra-1.20.1-47.4.13.jar
-C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\build\moddev\artifacts\forge-1.20.1-47.4.13.jar
+C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\moddev\artifacts\client-extra-1.20.1-47.4.13.jar
+C:\Users\Administrator\Documents\MCreator\workspaces\horse_sprint\Racehorse-Mod\build\moddev\artifacts\forge-1.20.1-47.4.13.jar
