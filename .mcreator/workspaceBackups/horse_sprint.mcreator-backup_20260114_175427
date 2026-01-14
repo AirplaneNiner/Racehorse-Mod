@@ -129,6 +129,10 @@
       "metadata": {
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -225,10 +229,10 @@
     "files": [
       "src/main/java/net/airplaneniner/horsesprint/init/HorseSprintModAttributes.java",
       "src/main/java/net/airplaneniner/horsesprint/init/HorseSprintModKeyMappings.java",
+      "src/main/resources/META-INF/mods.toml",
       "src/main/java/net/airplaneniner/horsesprint/network/HorseSprintModVariables.java",
-      "src/main/resources/pack.mcmeta",
       "src/main/java/net/airplaneniner/horsesprint/HorseSprintMod.java",
-      "src/main/resources/META-INF/mods.toml"
+      "src/main/resources/pack.mcmeta"
     ]
   },
   "foldersRoot": {

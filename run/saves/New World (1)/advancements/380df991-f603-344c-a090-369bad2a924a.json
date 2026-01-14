@@ -1,10 +1,4 @@
 {
-  "minecraft:husbandry/tame_an_animal": {
-    "criteria": {
-      "tamed_animal": "2026-01-14 17:46:33 +0200"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/crafting_table": {
     "criteria": {
       "unlock_right_away": "2026-01-14 17:43:01 +0200"
@@ -16,6 +10,12 @@
       "minecraft:plains": "2026-01-14 17:43:02 +0200"
     },
     "done": false
+  },
+  "minecraft:husbandry/tame_an_animal": {
+    "criteria": {
+      "tamed_animal": "2026-01-14 17:46:33 +0200"
+    },
+    "done": true
   },
   "DataVersion": 3465
 }

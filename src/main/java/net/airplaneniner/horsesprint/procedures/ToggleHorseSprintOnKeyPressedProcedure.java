@@ -27,8 +27,6 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
 						_entity.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(modifier);
 					}
 				}
-				HorseSprintModVariables.MapVariables.get(world).horseIsSprinting = true;
-				HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
 				HorseSprintMod.LOGGER.info(new java.text.DecimalFormat("##.##")
 						.format((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity7.getAttribute(Attributes.MOVEMENT_SPEED).getValue() : 0));
 				TickSpurtTimerProcedure.execute(world, entity);
