@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
+import net.minecraft.network.chat.Component;
 
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
@@ -46,6 +47,9 @@ public class ApplyHorseStaminaProcedure {
 						.setBaseValue((entity instanceof LivingEntity _livingEntity8 && _livingEntity8.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
 								? _livingEntity8.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()).getValue()
 								: 0));
+			entity.setCustomName(Component.literal((new java.text.DecimalFormat("##.##").format(entity instanceof LivingEntity _livingEntity10 && _livingEntity10.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
+					? _livingEntity10.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()).getValue()
+					: 0))));
 			HorseSprintModVariables.MapVariables.get(world).horseCanSprint = true;
 			HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
 		}
