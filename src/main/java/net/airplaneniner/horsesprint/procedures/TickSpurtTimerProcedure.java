@@ -12,6 +12,7 @@ import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class TickSpurtTimerProcedure {
@@ -31,18 +32,18 @@ public class TickSpurtTimerProcedure {
 			return;
 		if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseIsSprinting) {
 			if (((entity.getVehicle()) instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
-					? _livingEntity1.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()).getBaseValue()
+					? Objects.requireNonNull(_livingEntity1.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
 					: 0) > 0) {
 				if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
 					if ((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()))
-						_livingEntity5.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
+						Objects.requireNonNull(_livingEntity5.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()))
 								.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
-										? _livingEntity3.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()).getBaseValue()
+										? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
 										: 0) - 1));
 				}
 			}
 			if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
-					? _livingEntity7.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()).getBaseValue()
+					? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
 					: 0) <= 0) {
 				{
 					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {

@@ -17,9 +17,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 
 import net.airplaneniner.horsesprint.HorseSprintMod;
+import sekelsta.horse_colors.entity.HorseGeneticEntity;
+import sekelsta.horse_colors.entity.ModEntities;
 
 import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HorseSprintModAttributes {
@@ -31,9 +34,10 @@ public class HorseSprintModAttributes {
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
-		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_STAMINA.get()));
-		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_SPURT.get()));
-		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_SPURT_TIMER.get()));
-		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_MAX_SPURT_TIMER.get()));
+//        event.add(ModEntities.HORSE_GENETIC.orElse(null), HorseSprintModAttributes.HORSE_STAMINA.get());
+		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends HorseGeneticEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_STAMINA.get()));
+		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT.get()));
+		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT_TIMER.get()));
+		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_MAX_SPURT_TIMER.get()));
 	}
 }

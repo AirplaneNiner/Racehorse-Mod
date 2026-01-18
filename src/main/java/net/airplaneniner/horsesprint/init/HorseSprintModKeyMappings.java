@@ -27,12 +27,14 @@ public class HorseSprintModKeyMappings {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
 				HorseSprintMod.PACKET_HANDLER.sendToServer(new ToggleHorseSprintMessage(0, 0));
-				ToggleHorseSprintMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+                assert Minecraft.getInstance().player != null;
+                ToggleHorseSprintMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 				TOGGLE_HORSE_SPRINT_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
+			} else if (isDownOld != isDown) {
 				int dt = (int) (System.currentTimeMillis() - TOGGLE_HORSE_SPRINT_LASTPRESS);
 				HorseSprintMod.PACKET_HANDLER.sendToServer(new ToggleHorseSprintMessage(1, dt));
-				ToggleHorseSprintMessage.pressAction(Minecraft.getInstance().player, 1, dt);
+                assert Minecraft.getInstance().player != null;
+                ToggleHorseSprintMessage.pressAction(Minecraft.getInstance().player, 1, dt);
 			}
 			isDownOld = isDown;
 		}

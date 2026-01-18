@@ -13,6 +13,7 @@ import net.airplaneniner.horsesprint.procedures.ToggleHorseSprintOnKeyReleasedPr
 import net.airplaneniner.horsesprint.procedures.ToggleHorseSprintOnKeyPressedProcedure;
 import net.airplaneniner.horsesprint.HorseSprintMod;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -36,9 +37,7 @@ public class ToggleHorseSprintMessage {
 
 	public static void handler(ToggleHorseSprintMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
 		NetworkEvent.Context context = contextSupplier.get();
-		context.enqueueWork(() -> {
-			pressAction(context.getSender(), message.type, message.pressedms);
-		});
+		context.enqueueWork(() -> pressAction(Objects.requireNonNull(context.getSender()), message.type, message.pressedms));
 		context.setPacketHandled(true);
 	}
 
