@@ -1,6 +1,6 @@
 # Racehorse Mod (Forge 1.20.1)
 
-This mod is an extra mod for the wonderful [Realistic Horse Genetics](https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics "Realistic Horse Genetics") that allows horses to spurt for a short period of time. The amount that horses can spurt by, and the length that they can spurt for, are determined by the stats of the horse, and are shown above your hotbar. As the name of the mod suggests, this is tiered towards those who desire horse-racing to be something more than just "the highest speed stat wins".
+This Minecraft mod is an extra mod for the wonderful [Realistic Horse Genetics](https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics "Realistic Horse Genetics") that allows horses to spurt for a short period of time. The amount that horses can spurt by, and the length that they can spurt for, are determined by the stats of the horse, and are shown above your hotbar. As the name of the mod suggests, this is tiered towards those who desire Minecraft horse-racing to be something more than just "the highest speed stat wins".
 
 By default, the sprint key should be Left Control, but this can be remapped in Minecraft's settings under the Movement section.
 
