@@ -5,7 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
 
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 
@@ -16,21 +16,31 @@ public class TickSecondsProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player.level());
+			execute(event, event.player);
 		}
 	}
 
-	public static void execute(LevelAccessor world) {
-		execute(null, world);
+	public static void execute(Entity entity) {
+		execute(null, entity);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world) {
-		if (HorseSprintModVariables.MapVariables.get(world).SecondTimer == 20) {
-			HorseSprintModVariables.MapVariables.get(world).SecondTimer = 0;
-			HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
+	private static void execute(@Nullable Event event, Entity entity) {
+		if (entity == null)
+			return;
+		if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
+			{
+				entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+					capability.SecondTimer = 0;
+					capability.markSyncDirty();
+				});
+			}
 		} else {
-			HorseSprintModVariables.MapVariables.get(world).SecondTimer = HorseSprintModVariables.MapVariables.get(world).SecondTimer + 1;
-			HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
+			{
+				entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+					capability.SecondTimer = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer + 1;
+					capability.markSyncDirty();
+				});
+			}
 		}
 	}
 }

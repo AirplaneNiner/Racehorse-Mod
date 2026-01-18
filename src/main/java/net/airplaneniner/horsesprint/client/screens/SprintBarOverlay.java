@@ -40,7 +40,7 @@ public class SprintBarOverlay {
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 						SprintBarDisplayValueProcedure.execute(entity), w / 2 + 93, h / 2 + 96, -1, false);
-			if (SprintBarShowBarProcedure.execute(world))
+			if (SprintBarShowBarProcedure.execute(entity))
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font, Component.translatable("gui.horse_sprint.sprint_bar.label_empty"), w / 2 + 93, h / 2 + 84, -1, false);
 			if (SprintBarDisplayOverlayIngameProcedure.execute(entity))
 				event.getGuiGraphics().drawString(Minecraft.getInstance().font,

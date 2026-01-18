@@ -5,7 +5,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,22 +21,22 @@ import javax.annotation.Nullable;
 public class ApplyHorseStaminaProcedure {
 	@SubscribeEvent
 	public static void onEntitySpawned(EntityJoinLevelEvent event) {
-		execute(event, event.getLevel(), event.getEntity());
+		execute(event, event.getEntity());
 	}
 
-	public static void execute(LevelAccessor world, Entity entity) {
-		execute(null, world, entity);
+	public static void execute(Entity entity) {
+		execute(null, entity);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
+	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof HorseGeneticEntity) {
+		if (entity instanceof Horse) {
 			if (entity instanceof LivingEntity _livingEntity2 && _livingEntity2.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get()))
 				_livingEntity2.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get()).setBaseValue((Mth.nextDouble(RandomSource.create(), 0.05875, 0.16875)));
 			if (entity instanceof LivingEntity _livingEntity4 && _livingEntity4.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get()))
 				_livingEntity4.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
-						.setBaseValue((entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Attributes.JUMP_STRENGTH) ? _livingEntity3.getAttribute(Attributes.JUMP_STRENGTH).getBaseValue() : 0));
+						.setBaseValue(((entity instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(Attributes.MAX_HEALTH) ? _livingEntity3.getAttribute(Attributes.MAX_HEALTH).getBaseValue() : 0) / 70));
 			if ((entity instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity5.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) <= 0.2) {
 				if (entity instanceof LivingEntity _livingEntity8 && _livingEntity8.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()))
 					_livingEntity8.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
@@ -72,8 +71,12 @@ public class ApplyHorseStaminaProcedure {
 						.setBaseValue((entity instanceof LivingEntity _livingEntity23 && _livingEntity23.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
 								? _livingEntity23.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()).getValue()
 								: 0));
-			HorseSprintModVariables.MapVariables.get(world).horseCanSprint = true;
-			HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
+			{
+				entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+					capability.horseCanSprint = true;
+					capability.markSyncDirty();
+				});
+			}
 		}
 	}
 }

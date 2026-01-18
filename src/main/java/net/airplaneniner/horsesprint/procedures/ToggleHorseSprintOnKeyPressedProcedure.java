@@ -1,6 +1,5 @@
 package net.airplaneniner.horsesprint.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -11,11 +10,11 @@ import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
 
 public class ToggleHorseSprintOnKeyPressedProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.getVehicle()) instanceof HorseGeneticEntity) {
-			if (HorseSprintModVariables.MapVariables.get(world).horseCanSprint) {
+		if ((entity.getVehicle()) instanceof Horse) {
+			if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseCanSprint) {
 				if ((entity.getVehicle()) instanceof LivingEntity _entity) {
 					AttributeModifier modifier = new AttributeModifier("horse_sprint:spurt",
 							((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
@@ -26,9 +25,13 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
 						_entity.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(modifier);
 					}
 				}
-				HorseSprintModVariables.MapVariables.get(world).horseIsSprinting = true;
-				HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
-				TickSpurtTimerProcedure.execute(world, entity);
+				{
+					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+						capability.horseIsSprinting = true;
+						capability.markSyncDirty();
+					});
+				}
+				TickSpurtTimerProcedure.execute(entity);
 			}
 		}
 	}

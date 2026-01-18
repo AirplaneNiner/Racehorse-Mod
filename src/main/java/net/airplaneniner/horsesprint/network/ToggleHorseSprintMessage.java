@@ -52,11 +52,11 @@ public class ToggleHorseSprintMessage {
 			return;
 		if (type == 0) {
 
-			ToggleHorseSprintOnKeyPressedProcedure.execute(world, entity);
+			ToggleHorseSprintOnKeyPressedProcedure.execute(entity);
 		}
 		if (type == 1) {
 
-			ToggleHorseSprintOnKeyReleasedProcedure.execute(world, entity);
+			ToggleHorseSprintOnKeyReleasedProcedure.execute(entity);
 		}
 	}
 

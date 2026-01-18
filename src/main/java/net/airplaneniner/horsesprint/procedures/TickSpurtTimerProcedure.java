@@ -5,7 +5,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 
@@ -19,22 +18,22 @@ public class TickSpurtTimerProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player.level(), event.player);
+			execute(event, event.player);
 		}
 	}
 
-	public static void execute(LevelAccessor world, Entity entity) {
-		execute(null, world, entity);
+	public static void execute(Entity entity) {
+		execute(null, entity);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
+	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (HorseSprintModVariables.MapVariables.get(world).horseIsSprinting) {
+		if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseIsSprinting) {
 			if (((entity.getVehicle()) instanceof LivingEntity _livingEntity1 && _livingEntity1.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
 					? _livingEntity1.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()).getBaseValue()
 					: 0) > 0) {
-				if (HorseSprintModVariables.MapVariables.get(world).SecondTimer == 20) {
+				if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
 					if ((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()))
 						_livingEntity5.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
 								.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
@@ -45,9 +44,13 @@ public class TickSpurtTimerProcedure {
 			if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
 					? _livingEntity7.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()).getBaseValue()
 					: 0) <= 0) {
-				HorseSprintModVariables.MapVariables.get(world).horseCanSprint = false;
-				HorseSprintModVariables.MapVariables.get(world).markSyncDirty();
-				ToggleHorseSprintOnKeyReleasedProcedure.execute(world, entity);
+				{
+					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+						capability.horseCanSprint = false;
+						capability.markSyncDirty();
+					});
+				}
+				ToggleHorseSprintOnKeyReleasedProcedure.execute(entity);
 			}
 		}
 	}
