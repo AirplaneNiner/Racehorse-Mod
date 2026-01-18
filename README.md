@@ -23,6 +23,9 @@ Depending on if people want, I can release a version of the mod that's compatibl
 ## Credits
 
 [MCreator](https://mcreator.net) for letting a noob to Minecraft modding such as myself create and release their first actual mod.
+
 [Realistic Horse Genetics](https://www.curseforge.com/minecraft/mc-mods/realistic-horse-genetics "Realistic Horse Genetics") for their wonderful and incredible horses and breeding system.
+
 My good friend [DoctorWraith](https://github.com/Doctor-Wraith) for introducing me to the more hands-on code aspect of Minecraft modding and helping me integrate with RHG.
+
 And finally, the folks over on Keibacraft, the horse-racing server this mod was designed for, for helping me test and tweak the mod.
