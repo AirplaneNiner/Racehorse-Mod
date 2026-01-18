@@ -10,7 +10,7 @@ Like with any other mod, drop the jar file into the mods folder. Requires Realis
 
 ## Building
 
-Import the project into your chosen IDE (like Intellij IDEA) and run build.gradle. Once the dependencies have finished downloading and Gradle has been set up, run the build task. The output jar should be in root/builds/lib/horsesprint-1.20.1.jar.
+Import the project into your chosen IDE (like Intellij IDEA) and run build.gradle. Once the dependencies have finished downloading and Gradle has been set up, run the build task. The output jar should be in <project folder>/build/lib/horsesprint-1.20.1.jar.
 
 ## Issues and comments
 
