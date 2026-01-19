@@ -19,8 +19,8 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
 			if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseCanSprint) {
 				if ((entity.getVehicle()) instanceof LivingEntity _entity) {
 					AttributeModifier modifier = new AttributeModifier("horse_sprint:spurt",
-							((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
-									? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
+							((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
+									? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get())).getBaseValue()
 									: 0),
 							AttributeModifier.Operation.ADDITION);
 					if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
