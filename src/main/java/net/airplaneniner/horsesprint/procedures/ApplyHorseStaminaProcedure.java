@@ -63,27 +63,27 @@ public class ApplyHorseStaminaProcedure {
                     _livingEntity18.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
                             .setBaseValue(Math.ceil((entity instanceof LivingEntity _livingEntity16 && _livingEntity16.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
                                     ? _livingEntity16.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get()).getBaseValue()
-                                    : 0) * Mth.nextInt(RandomSource.create(), 15, 22)));
+                                    : 0) * Mth.nextInt(RandomSource.create(), 15, 20)));
             } else if ((entity instanceof LivingEntity _livingEntity19 && _livingEntity19.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity19.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) > 0.2
                     && (entity instanceof LivingEntity _livingEntity20 && _livingEntity20.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity20.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) <= 0.25) {
                 if (entity instanceof LivingEntity _livingEntity23 && _livingEntity23.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()))
                     _livingEntity23.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
                             .setBaseValue(Math.ceil((entity instanceof LivingEntity _livingEntity21 && _livingEntity21.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
                                     ? _livingEntity21.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get()).getBaseValue()
-                                    : 0) * Mth.nextInt(RandomSource.create(), 9, 17)));
+                                    : 0) * Mth.nextInt(RandomSource.create(), 12, 17)));
             } else if ((entity instanceof LivingEntity _livingEntity24 && _livingEntity24.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity24.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) > 0.25
                     && (entity instanceof LivingEntity _livingEntity25 && _livingEntity25.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity25.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) <= 0.3) {
                 if (entity instanceof LivingEntity _livingEntity28 && _livingEntity28.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()))
                     _livingEntity28.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
                             .setBaseValue(Math.ceil((entity instanceof LivingEntity _livingEntity26 && _livingEntity26.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
                                     ? _livingEntity26.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get()).getBaseValue()
-                                    : 0) * Mth.nextInt(RandomSource.create(), 5, 13)));
+                                    : 0) * Mth.nextInt(RandomSource.create(), 10, 15)));
             } else if ((entity instanceof LivingEntity _livingEntity29 && _livingEntity29.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? _livingEntity29.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue() : 0) > 0.3) {
                 if (entity instanceof LivingEntity _livingEntity32 && _livingEntity32.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get()))
                     _livingEntity32.getAttribute(HorseSprintModAttributes.HORSE_MAX_SPURT_TIMER.get())
                             .setBaseValue(Math.ceil((entity instanceof LivingEntity _livingEntity30 && _livingEntity30.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())
                                     ? _livingEntity30.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get()).getBaseValue()
-                                    : 0) * Mth.nextInt(RandomSource.create(), 3, 8)));
+                                    : 0) * Mth.nextInt(RandomSource.create(), 7, 12)));
             }
 
             // Fill up spurt timer
