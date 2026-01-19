@@ -14,6 +14,8 @@ Import the project into your chosen IDE (like Intellij IDEA) and run build.gradl
 
 ## Issues and comments
 
+For some reason, the sprint mode can get stuck on. If that happens, run /horsesprint toggle to force-toggle it off.
+
 I am aware of server lag messing the timer up, but I argue that makes things more interesting. If I can, I'll try and fix it.
 
 When reloading the world/server, the spurt speeds and times are recalculated. I have been asked not to fix this, so it's a feature now.
