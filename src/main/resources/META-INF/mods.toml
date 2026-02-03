@@ -1,11 +1,13 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-license="Not specified"
+license="MIT"
+issueTrackerURL = "https://github.com/AirplaneNiner/Racehorse-Mod/issues"
 
 [[mods]]
 modId="horse_sprint"
-version="1.20.1-beta1.0.4"
+version="1.20.1-beta1.1.1"
 displayName="Racehorse Mod"
+logoFile = "logo.png"
 displayURL="https://github.com/AirplaneNiner/Racehorse-Mod/tree/main"
 credits="MCreator, Realistic Horse Genetics, DoctorWraith, Keibacraft"
 authors="AirplaneNiner"
