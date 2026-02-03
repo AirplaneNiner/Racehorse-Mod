@@ -42,10 +42,16 @@ public class TickSpurtTimerProcedure {
 										: 0) - 1));
 				}
 			}
-			if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
-					? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
-					: 0) <= 0) {
-				{
+            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
+                    ? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
+                    : 0) <= 0) {
+                if (((entity.getVehicle()) instanceof LivingEntity _livingEntity9 && _livingEntity9.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())
+                        ? Objects.requireNonNull(_livingEntity9.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).getBaseValue()
+                        : 0) < 0) {
+                    if ((entity.getVehicle()) instanceof LivingEntity _livingEntity11 && _livingEntity11.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get()))
+                        Objects.requireNonNull(_livingEntity11.getAttribute(HorseSprintModAttributes.HORSE_SPURT_TIMER.get())).setBaseValue(0);
+                }
+                {
 					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
 						capability.horseCanSprint = false;
 						capability.markSyncDirty();
