@@ -1,19 +1,14 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-license="MIT"
-issueTrackerURL = "https://github.com/AirplaneNiner/Racehorse-Mod/issues"
+license="Not specified"
 
 [[mods]]
 modId="horse_sprint"
-version="1.20.1-beta1.1.2"
-displayName="Racehorse Mod"
-logoFile = "logo.png"
-displayURL="https://github.com/AirplaneNiner/Racehorse-Mod/tree/main"
-credits="MCreator, Realistic Horse Genetics, DoctorWraith, Keibacraft"
-authors="AirplaneNiner"
-description = '''
-This Minecraft mod is an extra mod for the wonderful Realistic Horse Genetics mod that allows horses to spurt for a short period of time. This mod is tiered towards those who desire Minecraft horse-racing to be something more than just "the highest speed stat wins".
-'''
+version="1.0.0"
+displayName="Horse Sprint"
+displayURL="https://mcreator.net"
+credits="Created using mod maker MCreator - https://mcreator.net/about"
+authors="MCreator"
 
 # Start of user code block mod configuration
 # End of user code block mod configuration
@@ -25,12 +20,8 @@ This Minecraft mod is an extra mod for the wonderful Realistic Horse Genetics mo
     ordering="AFTER"
     side="BOTH"
 
-[[dependencies.horse_sprint]]
-    modId="horse_colors"
-    mandatory=true
-    versionRange="[1.20.1-13.5]"
-    ordering="AFTER"
-    side="BOTH"
+
+
 
 # Start of user code block dependencies configuration
 # End of user code block dependencies configuration

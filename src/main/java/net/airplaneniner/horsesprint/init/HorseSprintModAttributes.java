@@ -17,9 +17,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 
 import net.airplaneniner.horsesprint.HorseSprintMod;
-import sekelsta.horse_colors.entity.ModEntities;
 
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HorseSprintModAttributes {
@@ -28,14 +28,14 @@ public class HorseSprintModAttributes {
 	public static final RegistryObject<Attribute> HORSE_SPURT = REGISTRY.register("horse_spurt", () -> new RangedAttribute("attribute.horse_sprint.horse_spurt", 0.4, 0.4, 1).setSyncable(true));
 	public static final RegistryObject<Attribute> HORSE_SPURT_TIMER = REGISTRY.register("horse_spurt_timer", () -> new RangedAttribute("attribute.horse_sprint.horse_spurt_timer", 0, 0, 99).setSyncable(true));
 	public static final RegistryObject<Attribute> HORSE_MAX_SPURT_TIMER = REGISTRY.register("horse_max_spurt_timer", () -> new RangedAttribute("attribute.horse_sprint.horse_max_spurt_timer", 0, 0, 99).setSyncable(true));
-    public static final RegistryObject<Attribute> HORSE_SPURT_COOLDOWN = REGISTRY.register("horse_spurt_cooldown", () -> new RangedAttribute("attribute.horse_sprint.horse_spurt_cooldown", 0, 0, 5).setSyncable(true));
+	public static final RegistryObject<Attribute> HORSE_SPURT_COOLDOWN = REGISTRY.register("horse_spurt_cooldown", () -> new RangedAttribute("attribute.horse_sprint.horse_spurt_cooldown", 0, 0, 5).setSyncable(true));
 
 	@SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
-		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_STAMINA.get()));
-		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT.get()));
-		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT_TIMER.get()));
-		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_MAX_SPURT_TIMER.get()));
-        Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT_COOLDOWN.get()));
-    }
+		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_STAMINA.get()));
+		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_SPURT.get()));
+		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_SPURT_TIMER.get()));
+		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_MAX_SPURT_TIMER.get()));
+		List.of(EntityType.HORSE).stream().filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).collect(Collectors.toList()).forEach(entity -> event.add(entity, HORSE_SPURT_COOLDOWN.get()));
+	}
 }

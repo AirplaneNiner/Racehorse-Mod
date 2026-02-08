@@ -4,5 +4,7 @@
   "attribute.horse_sprint.horse_spurt": "Horse Spurt",
   "attribute.horse_sprint.horse_spurt_timer": "Horse Spurt Timer",
   "attribute.horse_sprint.horse_max_spurt_timer": "Horse Spurt Timer",
-  "gui.horse_sprint.sprint_bar.label_empty": "Sprinting"
+  "gui.horse_sprint.sprint_bar.label_empty": "Sprinting",
+  "attribute.horse_sprint.horse_spurt_cooldown": "Horse Spurt Cooldown",
+  "item.horse_sprint.speedometer": "Speedometer"
 }
