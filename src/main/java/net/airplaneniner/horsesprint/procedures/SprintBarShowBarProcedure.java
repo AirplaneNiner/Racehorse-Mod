@@ -8,6 +8,6 @@ public class SprintBarShowBarProcedure {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;
-		return entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseIsSprinting == true;
+		return entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).horseIsSprinting;
 	}
 }

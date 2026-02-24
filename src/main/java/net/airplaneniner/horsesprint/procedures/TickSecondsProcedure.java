@@ -5,45 +5,46 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.Entity;
 
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
+import sekelsta.horse_colors.entity.HorseGeneticEntity;
 
 import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class TickSecondsProcedure {
-	@SubscribeEvent
-	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player);
-		}
-	}
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            execute(event, event.player);
+        }
+    }
 
-	public static void execute(Entity entity) {
-		execute(null, entity);
-	}
+    public static void execute(Entity entity) {
+        execute(null, entity);
+    }
 
-	private static void execute(@Nullable Event event, Entity entity) {
-		if (entity == null)
-			return;
-		if ((entity.getVehicle()) instanceof Horse) {
-			if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
-				{
-					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
-						capability.SecondTimer = 0;
-						capability.markSyncDirty();
-					});
-				}
-			} else {
-				{
-					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
-						capability.SecondTimer = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer + 1;
-						capability.markSyncDirty();
-					});
-				}
-			}
-		}
-	}
+    private static void execute(@Nullable Event event, Entity entity) {
+        if (entity == null)
+            return;
+        // Simple timer that returns true every 1 second. Used for time-based procedures
+        if ((entity.getVehicle()) instanceof HorseGeneticEntity) {
+            if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
+                {
+                    entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+                        capability.SecondTimer = 0;
+                        capability.markSyncDirty();
+                    });
+                }
+            } else {
+                {
+                    entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+                        capability.SecondTimer = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer + 1;
+                        capability.markSyncDirty();
+                    });
+                }
+            }
+        }
+    }
 }
