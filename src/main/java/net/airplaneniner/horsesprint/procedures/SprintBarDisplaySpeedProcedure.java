@@ -14,13 +14,13 @@ import java.util.Objects;
 
 public class SprintBarDisplaySpeedProcedure {
 	public static String execute(Entity entity) {
-		if (entity == null)
-			return "";
-        // Display horse speed if player has a Speedometer
-        if (hasEntityInInventory(entity, new ItemStack(HorseSprintModItems.SPEEDOMETER.get()))) {
-			return "Speed: " + (new java.text.DecimalFormat("##.##")
-					.format(((entity.getVehicle()) instanceof LivingEntity _livingEntity2 && _livingEntity2.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? Objects.requireNonNull(_livingEntity2.getAttribute(Attributes.MOVEMENT_SPEED)).getValue() : 0) * 43.17));
-		}
+//		if (entity == null)
+//			return "";
+//        // Display horse speed if player has a Speedometer
+//        if (hasEntityInInventory(entity, new ItemStack(HorseSprintModItems.SPEEDOMETER.get()))) {
+//			return "Speed: " + (new java.text.DecimalFormat("##.##")
+//					.format(((entity.getVehicle()) instanceof LivingEntity _livingEntity2 && _livingEntity2.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? Objects.requireNonNull(_livingEntity2.getAttribute(Attributes.MOVEMENT_SPEED)).getValue() : 0) * 43.17));
+//		}
 		return "";
 	}
 
