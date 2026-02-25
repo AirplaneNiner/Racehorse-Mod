@@ -26,7 +26,7 @@ public class ToggleHorseSprintOnKeyPressedProcedure {
                     AttributeModifier modifier = new AttributeModifier("horse_sprint:spurt",
                             (((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
                                     ? Objects.requireNonNull(_livingEntity5.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
-                                    : 0) * Mth.nextDouble(RandomSource.create(), 0.1, 0.3)),
+                                    : 0) * Mth.nextDouble(RandomSource.create(), 0.3, 0.5)),
                             AttributeModifier.Operation.ADDITION);
                     if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
                         Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);

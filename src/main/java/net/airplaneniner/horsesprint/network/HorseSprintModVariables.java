@@ -87,6 +87,8 @@ public class HorseSprintModVariables {
                 clone.XOld = original.XOld;
                 clone.ZOld = original.ZOld;
                 clone.DistRemaining = original.DistRemaining;
+                if (!event.isWasDeath()) {
+                }
             }));
         }
     }

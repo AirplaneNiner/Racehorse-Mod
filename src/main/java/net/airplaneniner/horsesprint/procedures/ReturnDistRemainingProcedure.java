@@ -17,6 +17,11 @@ public class ReturnDistRemainingProcedure {
                     ? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
                     : 0) <= 0) {
                 return "Distance limit reached!";
+            } else {
+                return "Dist remaining: "
+                        + (new java.text.DecimalFormat("##").format(Math.floor(((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+                        ? Objects.requireNonNull(_livingEntity5.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+                        : 0) / 50) * 50));
             }
         }
         return "";

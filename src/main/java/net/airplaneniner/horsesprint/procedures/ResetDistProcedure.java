@@ -1,5 +1,6 @@
 package net.airplaneniner.horsesprint.procedures;
 
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -41,6 +42,12 @@ public class ResetDistProcedure {
                 Objects.requireNonNull(livingEntity2.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).setBaseValue(0);
             if (livingEntity2.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT_COOLDOWN.get()))
                 Objects.requireNonNull(livingEntity2.getAttribute(HorseSprintModAttributes.HORSE_SPURT_COOLDOWN.get())).setBaseValue(0);
+            if (Objects.requireNonNull(livingEntity2.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:whipspurt"))) {
+                Objects.requireNonNull(livingEntity2.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
+                    if (_attribute.getName().equals("horse_sprint:whipspurt"))
+                        Objects.requireNonNull(livingEntity2.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(_attribute);
+                });
+            }
         }
     }
 }

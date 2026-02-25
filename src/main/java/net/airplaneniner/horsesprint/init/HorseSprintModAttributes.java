@@ -32,8 +32,9 @@ public class HorseSprintModAttributes {
     public static final RegistryObject<Attribute> DIST_APT = REGISTRY.register("dist_apt", () -> new RangedAttribute("attribute.horse_sprint.dist_apt", 400, 200, 2000).setSyncable(true));
     public static final RegistryObject<Attribute> HORSE_WHIP_COUNT = REGISTRY.register("horse_whip_count", () -> new RangedAttribute("attribute.horse_sprint.horse_whip_count", 0, 0, 3).setSyncable(true));
     public static final RegistryObject<Attribute> DIST_REMAINING = REGISTRY.register("dist_remaining", () -> new RangedAttribute("attribute.horse_sprint.dist_remaining", 500, 200, 2000).setSyncable(true));
+    public static final RegistryObject<Attribute> TRACK_APT = REGISTRY.register("track_apt", () -> new RangedAttribute("attribute.horse_sprint.track_apt", 0, 0, 1).setSyncable(true));
 
-	@SubscribeEvent
+    @SubscribeEvent
 	public static void addAttributes(EntityAttributeModificationEvent event) {
 		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_STAMINA.get()));
 		Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_SPURT.get()));
@@ -43,6 +44,6 @@ public class HorseSprintModAttributes {
         Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, DIST_APT.get()));
         Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, HORSE_WHIP_COUNT.get()));
         Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, DIST_REMAINING.get()));
-
+        Stream.of(ModEntities.HORSE_GENETIC.orElse(null)).filter(DefaultAttributes::hasSupplier).map(entityType -> (EntityType<? extends LivingEntity>) entityType).toList().forEach(entity -> event.add(entity, TRACK_APT.get()));
     }
 }
