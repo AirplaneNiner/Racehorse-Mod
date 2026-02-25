@@ -1,0 +1,11 @@
+{
+  "whip": {
+    "subtitle": "subtitles.whip",
+    "sounds": [
+      {
+        "name": "horse_sprint:whip",
+        "stream": false
+      }
+    ]
+  }
+}

@@ -6,5 +6,10 @@
   "attribute.horse_sprint.horse_max_spurt_timer": "Horse Spurt Timer",
   "gui.horse_sprint.sprint_bar.label_empty": "Sprinting",
   "attribute.horse_sprint.horse_spurt_cooldown": "Horse Spurt Cooldown",
-  "item.horse_sprint.speedometer": "Speedometer"
+  "item.horse_sprint.speedometer": "Speedometer",
+  "attribute.horse_sprint.dist_apt": "Distance Aptitude",
+  "attribute.horse_sprint.horse_whip_count": "Horse Whip Count",
+  "attribute.horse_sprint.dist_remaining": "Dist Remaining",
+  "attribute.horse_sprint.track_apt": "Track Apt",
+  "subtitles.whip": "Whip crackles"
 }
