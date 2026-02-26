@@ -9,14 +9,20 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.item.Item;
 
+import net.airplaneniner.horsesprint.item.WhipItem;
 import net.airplaneniner.horsesprint.item.SpeedometerItem;
+import net.airplaneniner.horsesprint.item.SpeedTimerItem;
 import net.airplaneniner.horsesprint.HorseSprintMod;
 
 public class HorseSprintModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, HorseSprintMod.MODID);
 	public static final RegistryObject<Item> SPEEDOMETER;
+	public static final RegistryObject<Item> WHIP;
+	public static final RegistryObject<Item> SPEED_TIMER;
 	static {
 		SPEEDOMETER = REGISTRY.register("speedometer", SpeedometerItem::new);
+		WHIP = REGISTRY.register("whip", WhipItem::new);
+		SPEED_TIMER = REGISTRY.register("speed_timer", SpeedTimerItem::new);
 	}
 	// Start of user code block custom items
 	// End of user code block custom items

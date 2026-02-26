@@ -11,5 +11,7 @@
   "attribute.horse_sprint.horse_whip_count": "Horse Whip Count",
   "attribute.horse_sprint.dist_remaining": "Dist Remaining",
   "attribute.horse_sprint.track_apt": "Track Apt",
-  "subtitles.whip": "Whip crackles"
+  "subtitles.whip": "Whip crackles",
+  "item.horse_sprint.whip": "Whip",
+  "item.horse_sprint.speed_timer": "Timer"
 }

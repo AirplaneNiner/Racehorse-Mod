@@ -1,5 +1,7 @@
 package net.airplaneniner.horsesprint.procedures;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -120,6 +122,6 @@ public class ApplyHorseStaminaProcedure {
                 });
             }
             ApplyAptitudesProcedure.execute(entity);
-		}
+        }
 	}
 }

@@ -20,9 +20,10 @@ public class HorseSprintModTabs {
 
 	@SubscribeEvent
 	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
-		// Add speedometer to creative inventory
-        if (tabData.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+		if (tabData.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
 			tabData.accept(HorseSprintModItems.SPEEDOMETER.get());
+			tabData.accept(HorseSprintModItems.WHIP.get());
+			tabData.accept(HorseSprintModItems.SPEED_TIMER.get());
 		}
 	}
 }

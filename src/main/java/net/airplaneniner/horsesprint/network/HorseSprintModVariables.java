@@ -27,160 +27,166 @@ import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 
 import net.airplaneniner.horsesprint.HorseSprintMod;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HorseSprintModVariables {
-    @SubscribeEvent
-    public static void init(FMLCommonSetupEvent event) {
-        HorseSprintMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handleData);
-    }
+	@SubscribeEvent
+	public static void init(FMLCommonSetupEvent event) {
+		HorseSprintMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handleData);
+	}
 
-    @SubscribeEvent
-    public static void init(RegisterCapabilitiesEvent event) {
-        event.register(PlayerVariables.class);
-    }
+	@SubscribeEvent
+	public static void init(RegisterCapabilitiesEvent event) {
+		event.register(PlayerVariables.class);
+	}
 
-    @Mod.EventBusSubscriber
-    public static class EventBusVariableHandlers {
-        @SubscribeEvent
-        public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player)
-                player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
-        }
+	@Mod.EventBusSubscriber
+	public static class EventBusVariableHandlers {
+		@SubscribeEvent
+		public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
+			if (event.getEntity() instanceof ServerPlayer player)
+				player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
+		}
 
-        @SubscribeEvent
-        public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player)
-                player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
-        }
+		@SubscribeEvent
+		public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
+			if (event.getEntity() instanceof ServerPlayer player)
+				player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
+		}
 
-        @SubscribeEvent
-        public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
-            if (event.getEntity() instanceof ServerPlayer player)
-                player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
-        }
+		@SubscribeEvent
+		public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
+			if (event.getEntity() instanceof ServerPlayer player)
+				player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability)));
+		}
 
-        @SubscribeEvent
-        public static void onPlayerTickUpdateSyncPlayerVariables(TickEvent.PlayerTickEvent event) {
-            if (event.phase == TickEvent.Phase.END && event.player instanceof ServerPlayer player) {
-                player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> {
-                    if (capability._syncDirty) {
-                        HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability));
-                        capability._syncDirty = false;
-                    }
-                });
-            }
-        }
+		@SubscribeEvent
+		public static void onPlayerTickUpdateSyncPlayerVariables(TickEvent.PlayerTickEvent event) {
+			if (event.phase == TickEvent.Phase.END && event.player instanceof ServerPlayer player) {
+				player.getCapability(PLAYER_VARIABLES).ifPresent(capability -> {
+					if (capability._syncDirty) {
+						HorseSprintMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> player), new PlayerVariablesSyncMessage(capability));
+						capability._syncDirty = false;
+					}
+				});
+			}
+		}
 
-        @SubscribeEvent
-        public static void clonePlayer(PlayerEvent.Clone event) {
-            event.getOriginal().revive();
-            event.getOriginal().getCapability(PLAYER_VARIABLES).ifPresent(original -> event.getEntity().getCapability(PLAYER_VARIABLES).ifPresent(clone -> {
-                clone.horseCanSprint = original.horseCanSprint;
-                clone.horseIsSprinting = original.horseIsSprinting;
-                clone.speed = original.speed;
-                clone.SecondTimer = original.SecondTimer;
-                clone.XOld = original.XOld;
-                clone.ZOld = original.ZOld;
-                clone.DistRemaining = original.DistRemaining;
-                if (!event.isWasDeath()) {
-                }
-            }));
-        }
-    }
+		@SubscribeEvent
+		public static void clonePlayer(PlayerEvent.Clone event) {
+			event.getOriginal().revive();
+			event.getOriginal().getCapability(PLAYER_VARIABLES).ifPresent(original -> {
+				event.getEntity().getCapability(PLAYER_VARIABLES).ifPresent(clone -> {
+					clone.horseCanSprint = original.horseCanSprint;
+					clone.horseIsSprinting = original.horseIsSprinting;
+					clone.speed = original.speed;
+					clone.SecondTimer = original.SecondTimer;
+					clone.XOld = original.XOld;
+					clone.ZOld = original.ZOld;
+					clone.TimerState = original.TimerState;
+					clone.distance = original.distance;
+					clone.time = original.time;
+					if (!event.isWasDeath()) {
+					}
+				});
+			});
+		}
+	}
 
-    public static final Capability<PlayerVariables> PLAYER_VARIABLES = CapabilityManager.get(new CapabilityToken<>() {
-    });
+	public static final Capability<PlayerVariables> PLAYER_VARIABLES = CapabilityManager.get(new CapabilityToken<PlayerVariables>() {
+	});
 
-    @Mod.EventBusSubscriber
-    private static class PlayerVariablesProvider implements ICapabilitySerializable<CompoundTag> {
-        @SubscribeEvent
-        public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-            if (event.getObject() instanceof Player && !(event.getObject() instanceof FakePlayer))
-                event.addCapability(new ResourceLocation("horse_sprint", "player_variables"), new PlayerVariablesProvider());
-        }
+	@Mod.EventBusSubscriber
+	private static class PlayerVariablesProvider implements ICapabilitySerializable<CompoundTag> {
+		@SubscribeEvent
+		public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
+			if (event.getObject() instanceof Player && !(event.getObject() instanceof FakePlayer))
+				event.addCapability(new ResourceLocation("horse_sprint", "player_variables"), new PlayerVariablesProvider());
+		}
 
-        private final PlayerVariables playerVariables = new PlayerVariables();
-        private final LazyOptional<PlayerVariables> instance = LazyOptional.of(() -> playerVariables);
+		private final PlayerVariables playerVariables = new PlayerVariables();
+		private final LazyOptional<PlayerVariables> instance = LazyOptional.of(() -> playerVariables);
 
-        @Override
-        public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
-            return cap == PLAYER_VARIABLES ? instance.cast() : LazyOptional.empty();
-        }
+		@Override
+		public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+			return cap == PLAYER_VARIABLES ? instance.cast() : LazyOptional.empty();
+		}
 
-        @Override
-        public CompoundTag serializeNBT() {
-            return playerVariables.serializeNBT();
-        }
+		@Override
+		public CompoundTag serializeNBT() {
+			return playerVariables.serializeNBT();
+		}
 
-        @Override
-        public void deserializeNBT(CompoundTag nbt) {
-            playerVariables.deserializeNBT(nbt);
-        }
-    }
+		@Override
+		public void deserializeNBT(CompoundTag nbt) {
+			playerVariables.deserializeNBT(nbt);
+		}
+	}
 
-    public static class PlayerVariables implements INBTSerializable<CompoundTag> {
-        boolean _syncDirty = false;
-        public boolean horseCanSprint = true;
-        public boolean horseIsSprinting = false;
-        public double speed = 0;
-        public double SecondTimer = 0.0;
-        public double XOld = 0;
-        public double ZOld = 0;
-        public double DistRemaining = 0;
+	public static class PlayerVariables implements INBTSerializable<CompoundTag> {
+		boolean _syncDirty = false;
+		public boolean horseCanSprint = true;
+		public boolean horseIsSprinting = false;
+		public double speed = 0;
+		public double SecondTimer = 0.0;
+		public double XOld = 0;
+		public double ZOld = 0;
+		public double TimerState = 0;
+		public double distance = 0;
+		public double time = 0;
 
-        @Override
-        public CompoundTag serializeNBT() {
-            CompoundTag nbt = new CompoundTag();
-            nbt.putBoolean("horseCanSprint", horseCanSprint);
-            nbt.putBoolean("horseIsSprinting", horseIsSprinting);
-            nbt.putDouble("speed", speed);
-            nbt.putDouble("SecondTimer", SecondTimer);
-            nbt.putDouble("XOld", XOld);
-            nbt.putDouble("ZOld", ZOld);
-            nbt.putDouble("DistRemaining", DistRemaining);
-            return nbt;
-        }
+		@Override
+		public CompoundTag serializeNBT() {
+			CompoundTag nbt = new CompoundTag();
+			nbt.putBoolean("horseCanSprint", horseCanSprint);
+			nbt.putBoolean("horseIsSprinting", horseIsSprinting);
+			nbt.putDouble("speed", speed);
+			nbt.putDouble("SecondTimer", SecondTimer);
+			nbt.putDouble("XOld", XOld);
+			nbt.putDouble("ZOld", ZOld);
+			nbt.putDouble("TimerState", TimerState);
+			nbt.putDouble("distance", distance);
+			nbt.putDouble("time", time);
+			return nbt;
+		}
 
-        @Override
-        public void deserializeNBT(CompoundTag nbt) {
-            horseCanSprint = nbt.getBoolean("horseCanSprint");
-            horseIsSprinting = nbt.getBoolean("horseIsSprinting");
-            speed = nbt.getDouble("speed");
-            SecondTimer = nbt.getDouble("SecondTimer");
-            XOld = nbt.getDouble("XOld");
-            ZOld = nbt.getDouble("ZOld");
-            DistRemaining = nbt.getDouble("DistRemaining");
-        }
+		@Override
+		public void deserializeNBT(CompoundTag nbt) {
+			horseCanSprint = nbt.getBoolean("horseCanSprint");
+			horseIsSprinting = nbt.getBoolean("horseIsSprinting");
+			speed = nbt.getDouble("speed");
+			SecondTimer = nbt.getDouble("SecondTimer");
+			XOld = nbt.getDouble("XOld");
+			ZOld = nbt.getDouble("ZOld");
+			TimerState = nbt.getDouble("TimerState");
+			distance = nbt.getDouble("distance");
+			time = nbt.getDouble("time");
+		}
 
-        public void markSyncDirty() {
-            _syncDirty = true;
-        }
-    }
+		public void markSyncDirty() {
+			_syncDirty = true;
+		}
+	}
 
-    public record PlayerVariablesSyncMessage(PlayerVariables data) {
-        public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
-            this(new PlayerVariables());
-            data.deserializeNBT(Objects.requireNonNull(buffer.readNbt()));
-        }
+	public record PlayerVariablesSyncMessage(PlayerVariables data) {
+		public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
+			this(new PlayerVariables());
+			data.deserializeNBT(buffer.readNbt());
+		}
 
-        public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
-            buffer.writeNbt(message.data().serializeNBT());
-        }
+		public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
+			buffer.writeNbt(message.data().serializeNBT());
+		}
 
-        public static void handleData(final PlayerVariablesSyncMessage message, final Supplier<NetworkEvent.Context> contextSupplier) {
-            NetworkEvent.Context context = contextSupplier.get();
-            context.enqueueWork(() -> {
-                if (!context.getDirection().getReceptionSide().isServer() && message.data != null) {
-                    assert Minecraft.getInstance().player != null;
-                    Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES).ifPresent(cap -> cap.deserializeNBT(message.data.serializeNBT()));
-                }
-            });
-            context.setPacketHandled(true);
-        }
-    }
+		public static void handleData(final PlayerVariablesSyncMessage message, final Supplier<NetworkEvent.Context> contextSupplier) {
+			NetworkEvent.Context context = contextSupplier.get();
+			context.enqueueWork(() -> {
+				if (!context.getDirection().getReceptionSide().isServer() && message.data != null)
+					Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES).ifPresent(cap -> cap.deserializeNBT(message.data.serializeNBT()));
+			});
+			context.setPacketHandled(true);
+		}
+	}
 }

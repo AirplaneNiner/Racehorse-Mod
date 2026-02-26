@@ -29,7 +29,7 @@ public class ApplyAptitudesProcedure {
             if (entity instanceof LivingEntity _livingEntity13 && _livingEntity13.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get()))
                 Objects.requireNonNull(_livingEntity13.getAttribute(HorseSprintModAttributes.DIST_APT.get())).setBaseValue((200 / Mth.nextDouble(RandomSource.create(), 0.1, 0.25)));
         }
-        if ((entity instanceof LivingEntity _livingEntity14 && _livingEntity14.getAttributes().hasAttribute(Attributes.MAX_HEALTH) ? Objects.requireNonNull(_livingEntity14.getAttribute(Attributes.MAX_HEALTH)).getBaseValue() : 0) % 5 == 1) {
+        if (Math.floor(((entity instanceof LivingEntity _livingEntity14 && _livingEntity14.getAttributes().hasAttribute(Attributes.JUMP_STRENGTH) ? Objects.requireNonNull(_livingEntity14.getAttribute(Attributes.JUMP_STRENGTH)).getBaseValue() : 0) * 100) % 5) == 1) {
             if (entity instanceof LivingEntity _livingEntity15 && _livingEntity15.getAttributes().hasAttribute(HorseSprintModAttributes.TRACK_APT.get()))
                 Objects.requireNonNull(_livingEntity15.getAttribute(HorseSprintModAttributes.TRACK_APT.get())).setBaseValue(1);
         } else {
@@ -40,5 +40,6 @@ public class ApplyAptitudesProcedure {
             Objects.requireNonNull(_livingEntity18.getAttribute(HorseSprintModAttributes.DIST_APT.get())).setBaseValue(Math.round(
                     entity instanceof LivingEntity _livingEntity17 && _livingEntity17.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get()) ? Objects.requireNonNull(_livingEntity17.getAttribute(HorseSprintModAttributes.DIST_APT.get())).getBaseValue() : 0));
         ResetDistProcedure.execute(entity);
+
     }
 }
