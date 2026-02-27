@@ -13,36 +13,36 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class MeasureSpeedProcedure {
-	@SubscribeEvent
-	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player);
-		}
-	}
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            execute(event, event.player);
+        }
+    }
 
-	public static void execute(Entity entity) {
-		execute(null, entity);
-	}
+    public static void execute(Entity entity) {
+        execute(null, entity);
+    }
 
-	private static void execute(@Nullable Event event, Entity entity) {
-		if (entity == null)
-			return;
-		if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).TimerState == 1) {
-			if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
-				{
-					entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
-						capability.distance = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).distance
-								+ entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).speed;
-						capability.markSyncDirty();
-					});
-				}
-			}
-			{
-				entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
-					capability.time = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).time + 0.05;
-					capability.markSyncDirty();
-				});
-			}
-		}
-	}
+    private static void execute(@Nullable Event event, Entity entity) {
+        if (entity == null)
+            return;
+        if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).TimerState == 1) {
+            if (entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).SecondTimer == 20) {
+                {
+                    entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+                        capability.timerdistance = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).timerdistance
+                                + entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).speed;
+                        capability.markSyncDirty();
+                    });
+                }
+            }
+            {
+                entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).ifPresent(capability -> {
+                    capability.timertime = entity.getCapability(HorseSprintModVariables.PLAYER_VARIABLES).orElseGet(HorseSprintModVariables.PlayerVariables::new).timertime + 0.05;
+                    capability.markSyncDirty();
+                });
+            }
+        }
+    }
 }

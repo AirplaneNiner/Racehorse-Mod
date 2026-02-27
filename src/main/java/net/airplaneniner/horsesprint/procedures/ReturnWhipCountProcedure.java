@@ -30,21 +30,31 @@ public class ReturnWhipCountProcedure {
     private static String execute(@Nullable Event event, Entity entity) {
         if (entity == null)
             return "";
+        double whipdist = 0;
         if ((entity.getVehicle()) instanceof HorseGeneticEntity) {
-            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
-                    ? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
-                    : 0) > 200) {
+            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get())
+                    ? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.DIST_APT.get())).getBaseValue()
+                    : 0) > 1200) {
+                whipdist = 400;
+            } else if (((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get())
+                    ? Objects.requireNonNull(_livingEntity5.getAttribute(HorseSprintModAttributes.DIST_APT.get())).getBaseValue()
+                    : 0) > 900) {
+                whipdist = 300;
+            } else {
+                whipdist = 200;
+            }
+            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+                    ? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+                    : 0) > whipdist) {
                 return "Cannot whip yet!";
             }
-            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity5 && _livingEntity5.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
-                    ? Objects.requireNonNull(_livingEntity5.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
-                    : 0) <= 200
-                    && ((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
-                    ? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+            if (((entity.getVehicle()) instanceof LivingEntity _livingEntity9 && _livingEntity9.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+                    ? Objects.requireNonNull(_livingEntity9.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+                    : 0) <= whipdist
+                    && ((entity.getVehicle()) instanceof LivingEntity _livingEntity11 && _livingEntity11.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+                    ? Objects.requireNonNull(_livingEntity11.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
                     : 0) > 0) {
-                return "Whip: " + (new java.text.DecimalFormat("##").format((entity.getVehicle()) instanceof LivingEntity _livingEntity9 && _livingEntity9.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())
-                        ? Objects.requireNonNull(_livingEntity9.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).getBaseValue()
-                        : 0));
+                return "Left click to whip!";
             }
         }
         return "";

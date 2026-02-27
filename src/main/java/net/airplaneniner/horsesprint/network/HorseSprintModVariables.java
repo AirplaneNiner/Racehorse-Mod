@@ -86,8 +86,10 @@ public class HorseSprintModVariables {
 					clone.XOld = original.XOld;
 					clone.ZOld = original.ZOld;
 					clone.TimerState = original.TimerState;
-					clone.distance = original.distance;
-					clone.time = original.time;
+					clone.timerdistance = original.timerdistance;
+					clone.timertime = original.timertime;
+					clone.speeddistance = original.speeddistance;
+					clone.speedtime = original.speedtime;
 					if (!event.isWasDeath()) {
 					}
 				});
@@ -134,8 +136,10 @@ public class HorseSprintModVariables {
 		public double XOld = 0;
 		public double ZOld = 0;
 		public double TimerState = 0;
-		public double distance = 0;
-		public double time = 0;
+		public double timerdistance = 0;
+		public double timertime = 0;
+		public double speeddistance = 0;
+		public double speedtime = 0;
 
 		@Override
 		public CompoundTag serializeNBT() {
@@ -147,8 +151,10 @@ public class HorseSprintModVariables {
 			nbt.putDouble("XOld", XOld);
 			nbt.putDouble("ZOld", ZOld);
 			nbt.putDouble("TimerState", TimerState);
-			nbt.putDouble("distance", distance);
-			nbt.putDouble("time", time);
+			nbt.putDouble("timerdistance", timerdistance);
+			nbt.putDouble("timertime", timertime);
+			nbt.putDouble("speeddistance", speeddistance);
+			nbt.putDouble("speedtime", speedtime);
 			return nbt;
 		}
 
@@ -161,8 +167,10 @@ public class HorseSprintModVariables {
 			XOld = nbt.getDouble("XOld");
 			ZOld = nbt.getDouble("ZOld");
 			TimerState = nbt.getDouble("TimerState");
-			distance = nbt.getDouble("distance");
-			time = nbt.getDouble("time");
+			timerdistance = nbt.getDouble("timerdistance");
+			timertime = nbt.getDouble("timertime");
+			speeddistance = nbt.getDouble("speeddistance");
+			speedtime = nbt.getDouble("speedtime");
 		}
 
 		public void markSyncDirty() {
