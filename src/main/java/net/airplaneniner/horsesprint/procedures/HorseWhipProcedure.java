@@ -80,39 +80,117 @@ public class HorseWhipProcedure {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == HorseSprintModItems.WHIP.get()) {
 					if (((entity.getVehicle()) instanceof LivingEntity _livingEntity7 && _livingEntity7.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
 							? Objects.requireNonNull(_livingEntity7.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
-							: 0) > 0 == (((entity.getVehicle()) instanceof LivingEntity _livingEntity9 && _livingEntity9.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
-									? Objects.requireNonNull(_livingEntity9.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
-									: 0) <= 200)) {
-						if ((entity.getVehicle()) instanceof LivingEntity _entity) {
-							AttributeModifier modifier = new AttributeModifier("horse_sprint:whipspurt",
-									((entity.getVehicle()) instanceof LivingEntity _livingEntity11 && _livingEntity11.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
-											? Objects.requireNonNull(_livingEntity11.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
-											: 0),
-									AttributeModifier.Operation.ADDITION);
-							if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
-								Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
-							}
-						}
-						if ((entity.getVehicle()) instanceof LivingEntity _livingEntity17 && _livingEntity17.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
-							Objects.requireNonNull(_livingEntity17.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
-									.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity15 && _livingEntity15.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())
-											? Objects.requireNonNull(_livingEntity15.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).getBaseValue()
-											: 0) + 1));
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1);
-							} else {
-								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1, false);
-							}
-						}
-						HorseSprintMod.queueServerWork(Mth.nextInt(RandomSource.create(), 20, 200), () -> {
-							if ((entity.getVehicle()) instanceof LivingEntity _entity) {
-								Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
-									if (_attribute.getName().equals("horse_sprint:whipspurt"))
-										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(_attribute);
+							: 0) > 0) {
+						if (((entity.getVehicle()) instanceof LivingEntity _livingEntity9 && _livingEntity9.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get())
+								? Objects.requireNonNull(_livingEntity9.getAttribute(HorseSprintModAttributes.DIST_APT.get())).getBaseValue()
+								: 0) > 1200) {
+							if (((entity.getVehicle()) instanceof LivingEntity _livingEntity11 && _livingEntity11.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+									? Objects.requireNonNull(_livingEntity11.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+									: 0) <= 400) {
+								if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+									AttributeModifier modifier = new AttributeModifier("horse_sprint:whipspurt",
+											((entity.getVehicle()) instanceof LivingEntity _livingEntity13 && _livingEntity13.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
+													? Objects.requireNonNull(_livingEntity13.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
+													: 0),
+											AttributeModifier.Operation.ADDITION);
+									if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
+									}
+								}
+								if ((entity.getVehicle()) instanceof LivingEntity _livingEntity19 && _livingEntity19.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+									Objects.requireNonNull(_livingEntity19.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+											.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity17 && _livingEntity17.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())
+													? Objects.requireNonNull(_livingEntity17.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).getBaseValue()
+													: 0) + 1));
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								HorseSprintMod.queueServerWork(Mth.nextInt(RandomSource.create(), 20, 200), () -> {
+									if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
+											if (_attribute.getName().equals("horse_sprint:whipspurt"))
+												Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(_attribute);
+										});
+									}
 								});
 							}
-						});
+						} else if (((entity.getVehicle()) instanceof LivingEntity _livingEntity29 && _livingEntity29.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_APT.get())
+								? Objects.requireNonNull(_livingEntity29.getAttribute(HorseSprintModAttributes.DIST_APT.get())).getBaseValue()
+								: 0) > 900) {
+							if (((entity.getVehicle()) instanceof LivingEntity _livingEntity31 && _livingEntity31.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+									? Objects.requireNonNull(_livingEntity31.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+									: 0) <= 300) {
+								if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+									AttributeModifier modifier = new AttributeModifier("horse_sprint:whipspurt",
+											((entity.getVehicle()) instanceof LivingEntity _livingEntity33 && _livingEntity33.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
+													? Objects.requireNonNull(_livingEntity33.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
+													: 0),
+											AttributeModifier.Operation.ADDITION);
+									if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
+									}
+								}
+								if ((entity.getVehicle()) instanceof LivingEntity _livingEntity39 && _livingEntity39.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+									Objects.requireNonNull(_livingEntity39.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+											.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity37 && _livingEntity37.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())
+													? Objects.requireNonNull(_livingEntity37.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).getBaseValue()
+													: 0) + 1));
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								HorseSprintMod.queueServerWork(Mth.nextInt(RandomSource.create(), 20, 200), () -> {
+									if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
+											if (_attribute.getName().equals("horse_sprint:whipspurt"))
+												Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(_attribute);
+										});
+									}
+								});
+							}
+						} else {
+							if (((entity.getVehicle()) instanceof LivingEntity _livingEntity49 && _livingEntity49.getAttributes().hasAttribute(HorseSprintModAttributes.DIST_REMAINING.get())
+									? Objects.requireNonNull(_livingEntity49.getAttribute(HorseSprintModAttributes.DIST_REMAINING.get())).getBaseValue()
+									: 0) <= 200) {
+								if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+									AttributeModifier modifier = new AttributeModifier("horse_sprint:whipspurt",
+											((entity.getVehicle()) instanceof LivingEntity _livingEntity51 && _livingEntity51.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())
+													? Objects.requireNonNull(_livingEntity51.getAttribute(HorseSprintModAttributes.HORSE_STAMINA.get())).getBaseValue()
+													: 0),
+											AttributeModifier.Operation.ADDITION);
+									if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
+									}
+								}
+								if ((entity.getVehicle()) instanceof LivingEntity _livingEntity57 && _livingEntity57.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+									Objects.requireNonNull(_livingEntity57.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get()))
+											.setBaseValue((((entity.getVehicle()) instanceof LivingEntity _livingEntity55 && _livingEntity55.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())
+													? Objects.requireNonNull(_livingEntity55.getAttribute(HorseSprintModAttributes.HORSE_WHIP_COUNT.get())).getBaseValue()
+													: 0) + 1));
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("horse_sprint:whip"))), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								HorseSprintMod.queueServerWork(Mth.nextInt(RandomSource.create(), 20, 200), () -> {
+									if ((entity.getVehicle()) instanceof LivingEntity _entity) {
+										Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
+											if (_attribute.getName().equals("horse_sprint:whipspurt"))
+												Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(_attribute);
+										});
+									}
+								});
+							}
+						}
 					}
 				}
 			}

@@ -27,7 +27,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 
 import net.airplaneniner.horsesprint.HorseSprintMod;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -77,28 +79,24 @@ public class HorseSprintModVariables {
 		@SubscribeEvent
 		public static void clonePlayer(PlayerEvent.Clone event) {
 			event.getOriginal().revive();
-			event.getOriginal().getCapability(PLAYER_VARIABLES).ifPresent(original -> {
-				event.getEntity().getCapability(PLAYER_VARIABLES).ifPresent(clone -> {
-					clone.horseCanSprint = original.horseCanSprint;
-					clone.horseIsSprinting = original.horseIsSprinting;
-					clone.speed = original.speed;
-					clone.SecondTimer = original.SecondTimer;
-					clone.XOld = original.XOld;
-					clone.ZOld = original.ZOld;
-					clone.TimerState = original.TimerState;
-					clone.timerdistance = original.timerdistance;
-					clone.timertime = original.timertime;
-					clone.speeddistance = original.speeddistance;
-					clone.speedtime = original.speedtime;
-					if (!event.isWasDeath()) {
-					}
-				});
-			});
+			event.getOriginal().getCapability(PLAYER_VARIABLES).ifPresent(original -> event.getEntity().getCapability(PLAYER_VARIABLES).ifPresent(clone -> {
+                clone.horseCanSprint = original.horseCanSprint;
+                clone.horseIsSprinting = original.horseIsSprinting;
+                clone.speed = original.speed;
+                clone.SecondTimer = original.SecondTimer;
+                clone.XOld = original.XOld;
+                clone.ZOld = original.ZOld;
+                clone.TimerState = original.TimerState;
+                clone.timerdistance = original.timerdistance;
+                clone.timertime = original.timertime;
+                clone.speeddistance = original.speeddistance;
+                clone.speedtime = original.speedtime;
+}));
 		}
 	}
 
-	public static final Capability<PlayerVariables> PLAYER_VARIABLES = CapabilityManager.get(new CapabilityToken<PlayerVariables>() {
-	});
+	public static final Capability<PlayerVariables> PLAYER_VARIABLES = CapabilityManager.get(new CapabilityToken<>() {
+    });
 
 	@Mod.EventBusSubscriber
 	private static class PlayerVariablesProvider implements ICapabilitySerializable<CompoundTag> {
@@ -112,7 +110,7 @@ public class HorseSprintModVariables {
 		private final LazyOptional<PlayerVariables> instance = LazyOptional.of(() -> playerVariables);
 
 		@Override
-		public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+		public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
 			return cap == PLAYER_VARIABLES ? instance.cast() : LazyOptional.empty();
 		}
 
@@ -181,7 +179,7 @@ public class HorseSprintModVariables {
 	public record PlayerVariablesSyncMessage(PlayerVariables data) {
 		public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
 			this(new PlayerVariables());
-			data.deserializeNBT(buffer.readNbt());
+			data.deserializeNBT(Objects.requireNonNull(buffer.readNbt()));
 		}
 
 		public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
@@ -191,8 +189,10 @@ public class HorseSprintModVariables {
 		public static void handleData(final PlayerVariablesSyncMessage message, final Supplier<NetworkEvent.Context> contextSupplier) {
 			NetworkEvent.Context context = contextSupplier.get();
 			context.enqueueWork(() -> {
-				if (!context.getDirection().getReceptionSide().isServer() && message.data != null)
-					Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES).ifPresent(cap -> cap.deserializeNBT(message.data.serializeNBT()));
+				if (!context.getDirection().getReceptionSide().isServer() && message.data != null) {
+                    assert Minecraft.getInstance().player != null;
+                    Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES).ifPresent(cap -> cap.deserializeNBT(message.data.serializeNBT()));
+                }
 			});
 			context.setPacketHandled(true);
 		}

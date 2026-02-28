@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
 import sekelsta.horse_colors.entity.HorseGeneticEntity;
+import sekelsta.horse_colors.entity.AbstractHorseGenetic;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -55,6 +56,13 @@ public class ApplyHorseStaminaProcedure {
                         }
                     }
                 }
+            }
+	    
+ 	        // Apply weight
+            if (livingEntity1.getAttributes().hasAttribute(HorseSprintModAttributes.WEIGHT.get())) {
+                Objects.requireNonNull(livingEntity1.getAttribute(HorseSprintModAttributes.WEIGHT.get()))
+                        .setBaseValue((livingEntity1.getAttributes().hasAttribute(Attributes.JUMP_STRENGTH) ? Objects.requireNonNull(livingEntity1.getAttribute(Attributes.JUMP_STRENGTH)).getBaseValue() : 0) * 700
+                                + Mth.nextInt(RandomSource.create(), -10, 10));
             }
 
             // Apply spurt modifier

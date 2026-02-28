@@ -103,6 +103,11 @@ public class ReturnDistAptProcedure {
                     }
                 }
             }
+            if (sourceentity instanceof Player _player && !_player.level().isClientSide()) {
+                _player.displayClientMessage(Component.literal(("Current weight: " + (new java.text.DecimalFormat("##").format(
+                        livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.WEIGHT.get()) ? Objects.requireNonNull(livingEntity3.getAttribute(HorseSprintModAttributes.WEIGHT.get())).getBaseValue() : 0))
+                        + "kg")), false);
+            }
         }
     }
 }
