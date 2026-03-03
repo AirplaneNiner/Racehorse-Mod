@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
 import net.airplaneniner.horsesprint.procedures.ReturnSpeedProcedure;
+import org.jetbrains.annotations.NotNull;
 
 public class SpeedTimerItem extends Item {
 	public SpeedTimerItem() {
@@ -15,12 +16,12 @@ public class SpeedTimerItem extends Item {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack) {
+	public int getUseDuration(@NotNull ItemStack itemstack) {
 		return 5;
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level world, @NotNull Player entity, @NotNull InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		entity.startUsingItem(hand);
 		ReturnSpeedProcedure.execute(entity);

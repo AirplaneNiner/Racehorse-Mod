@@ -39,18 +39,17 @@ public class TrackAptSpeedProcedure {
             if (((entity.getVehicle()) instanceof LivingEntity _livingEntity3 && _livingEntity3.getAttributes().hasAttribute(HorseSprintModAttributes.TRACK_APT.get())
                     ? Objects.requireNonNull(_livingEntity3.getAttribute(HorseSprintModAttributes.TRACK_APT.get())).getBaseValue()
                     : 0) == 1) {
-                if (!((world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.DIRT
-                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.SAND
-                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.COARSE_DIRT
-                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.STONE)) {
+                if ((world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.GRASS_BLOCK) {
                     if ((entity.getVehicle()) instanceof LivingEntity _entity) {
-                        AttributeModifier modifier = new AttributeModifier("horse_sprint:penalty", (-0.1), AttributeModifier.Operation.ADDITION);
+                        AttributeModifier modifier = new AttributeModifier("horse_sprint:penalty", (Math
+                                .abs((entity instanceof LivingEntity _livingEntity12 && _livingEntity12.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? Objects.requireNonNull(_livingEntity12.getAttribute(Attributes.MOVEMENT_SPEED)).getBaseValue() : 0) - 0.11582)
+                                * (-1)), AttributeModifier.Operation.ADDITION);
                         if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
                             Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
                         }
                     }
                 } else {
-                    if ((entity.getVehicle()) instanceof LivingEntity _livingEntity39 && Objects.requireNonNull(_livingEntity39.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:penalty"))) {
+                    if ((entity.getVehicle()) instanceof LivingEntity _livingEntity16 && Objects.requireNonNull(_livingEntity16.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:penalty"))) {
                         if ((entity.getVehicle()) instanceof LivingEntity _entity) {
                             Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
                                 if (_attribute.getName().equals("horse_sprint:penalty"))
@@ -60,16 +59,19 @@ public class TrackAptSpeedProcedure {
                     }
                 }
             } else {
-                if (!((world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.GRASS_BLOCK
-                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.STONE)) {
+                if ((world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.DIRT
+                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.SAND
+                        || (world.getBlockState(BlockPos.containing((entity.getVehicle()).getX(), (entity.getVehicle()).getY() - 1, (entity.getVehicle()).getZ()))).getBlock() == Blocks.COARSE_DIRT) {
                     if ((entity.getVehicle()) instanceof LivingEntity _entity) {
-                        AttributeModifier modifier = new AttributeModifier("horse_sprint:penalty", (-0.1), AttributeModifier.Operation.ADDITION);
+                        AttributeModifier modifier = new AttributeModifier("horse_sprint:penalty", (Math
+                                .abs((entity instanceof LivingEntity _livingEntity43 && _livingEntity43.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED) ? Objects.requireNonNull(_livingEntity43.getAttribute(Attributes.MOVEMENT_SPEED)).getBaseValue() : 0) - 0.11582)
+                                * (-1)), AttributeModifier.Operation.ADDITION);
                         if (Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().noneMatch((e) -> e.getName().equals(modifier.getName()))) {
                             Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).addPermanentModifier(modifier);
                         }
                     }
                 } else {
-                    if ((entity.getVehicle()) instanceof LivingEntity _livingEntity61 && Objects.requireNonNull(_livingEntity61.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:penalty"))) {
+                    if ((entity.getVehicle()) instanceof LivingEntity _livingEntity47 && Objects.requireNonNull(_livingEntity47.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().stream().anyMatch((e) -> e.getName().equals("horse_sprint:penalty"))) {
                         if ((entity.getVehicle()) instanceof LivingEntity _entity) {
                             Objects.requireNonNull(_entity.getAttribute(Attributes.MOVEMENT_SPEED)).getModifiers().forEach((_attribute) -> {
                                 if (_attribute.getName().equals("horse_sprint:penalty"))

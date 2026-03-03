@@ -15,7 +15,8 @@ import net.minecraft.util.Mth;
 import net.airplaneniner.horsesprint.network.HorseSprintModVariables;
 import net.airplaneniner.horsesprint.init.HorseSprintModAttributes;
 import sekelsta.horse_colors.entity.HorseGeneticEntity;
-import sekelsta.horse_colors.entity.AbstractHorseGenetic;
+import sekelsta.horse_colors.entity.genetics.EquineGenome;
+import sekelsta.horse_colors.entity.genetics.Species;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -35,6 +36,9 @@ public class ApplyHorseStaminaProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof HorseGeneticEntity livingEntity1) {
+            // Get max health since Attributes.MAXHEALTH doesn't work
+            float horseHealth = livingEntity1.getMaxHealth();
+
             // Apply speed increase
             // This is based off the jump strength of the horse
             // In future, will use RHG attributes
@@ -61,15 +65,15 @@ public class ApplyHorseStaminaProcedure {
  	        // Apply weight
             if (livingEntity1.getAttributes().hasAttribute(HorseSprintModAttributes.WEIGHT.get())) {
                 Objects.requireNonNull(livingEntity1.getAttribute(HorseSprintModAttributes.WEIGHT.get()))
-                        .setBaseValue((livingEntity1.getAttributes().hasAttribute(Attributes.JUMP_STRENGTH) ? Objects.requireNonNull(livingEntity1.getAttribute(Attributes.JUMP_STRENGTH)).getBaseValue() : 0) * 700
-                                + Mth.nextInt(RandomSource.create(), -10, 10));
+                        .setBaseValue(horseHealth * 20
+                                + Mth.nextInt(RandomSource.create(), -8, 6));
             }
 
             // Apply spurt modifier
             // This is based off the HP of the horse
             if (livingEntity1.getAttributes().hasAttribute(HorseSprintModAttributes.HORSE_SPURT.get())) {
                 Objects.requireNonNull(livingEntity1.getAttribute(HorseSprintModAttributes.HORSE_SPURT.get()))
-                        .setBaseValue((livingEntity1.getAttributes().hasAttribute(Attributes.MAX_HEALTH) ? Objects.requireNonNull(livingEntity1.getAttribute(Attributes.MAX_HEALTH)).getBaseValue() : 0) / 40);
+                        .setBaseValue(horseHealth / 40);
             }
 
             // Apply spurt time
