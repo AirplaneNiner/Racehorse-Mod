@@ -5,7 +5,7 @@ issueTrackerURL = "https://github.com/AirplaneNiner/Racehorse-Mod/issues"
 
 [[mods]]
 modId="horse_sprint"
-version="1.20.1-beta1.2.4"
+version="1.20.1-beta1.2.5"
 displayName="Racehorse Mod"
 logoFile = "logo.png"
 displayURL="https://github.com/AirplaneNiner/Racehorse-Mod/tree/main"
